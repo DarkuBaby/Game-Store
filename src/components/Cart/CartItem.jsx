@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import RemoveFromCart from "../Buttons/RemoveFromCart.jsx"
 
-const CartItem = ({ id, name, price, imgSrc, quantity }) => {
+const CartItem = ({ id, name, price, imgSrc }) => {
   return (
     <div className=" w-[100%] bg-[rgba(0,0,0,0.2)] relative mb-8 p-2">
       <div className="flex items-center flex-col gap-8 lg:flex-row lg:gap-16">
@@ -15,7 +15,6 @@ const CartItem = ({ id, name, price, imgSrc, quantity }) => {
           <div className=" p-2 ">
             <h3 className=" mb-2 text-xl lg:text-base">{name}</h3>
             <p className="text-lime-300">&#8377; {price}</p>
-            <p>{quantity}</p>
           </div>
           <div className="p-2 mt-4 text-sm z-10 right-2 bottom-0 lg:absolute lg:mt-0">
             <RemoveFromCart id={id} />

@@ -23,7 +23,7 @@ const WishItem = ({ id, name, price, imgSrc }) => {
           <AddToCart
             id={id} 
             name={name} 
-            price={269} 
+            price={404} 
             imgSrc={imgSrc}
             />
           </div>

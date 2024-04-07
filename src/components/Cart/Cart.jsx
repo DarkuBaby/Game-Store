@@ -25,7 +25,7 @@ const Cart = () => {
                <p>Your Cart is Empty</p> :
                cart.map((cartItem) => (
                  <CartItem 
-                   key={uuidv4()}
+                   key={cartItem.id}
                    id={cartItem.id}
                    name={cartItem.name}
                    price={cartItem.price}

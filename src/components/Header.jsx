@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import useCartStore from "./store/cartStore.js";
+import useWishListStore from "./store/wishListStore";
+
 
 const Header = () => {
   const [navWidth, setNavWidth] = useState("w-[0]");
@@ -7,6 +10,9 @@ const Header = () => {
   const handleNavbar = () => {
     setNavWidth(navWidth === "w-[0]" ? "w-[100%]" : "w-[0]");
   };
+
+  const cart = useCartStore((state)=> state.cart);
+  const wishList = useWishListStore((state)=> state.wishList);
 
   return (
     <header className="bg-[#0f172a]  shadow-md text-white relative ">
@@ -65,7 +71,7 @@ const Header = () => {
                   } hover:text-[#3b82f6]`
                 }
               >
-                Wishlist
+                Wishlist {wishList.length !== 0 && `(${wishList.length})`}
               </NavLink>
             </li>
             <li className=" my-3 ml-3 uppercase font-semibold  lg:my-0 lg:ml-0">
@@ -79,7 +85,7 @@ const Header = () => {
                   } hover:text-[#3b82f6]`
                 }
               >
-                Cart
+                Cart {cart.length !== 0 && `(${cart.length})`}
               </NavLink>
             </li>
           </ul>

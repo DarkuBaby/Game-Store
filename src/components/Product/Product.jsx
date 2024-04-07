@@ -117,7 +117,7 @@ const Product = () => {
               </div>
             </div>
             <div className="py-4 px-2 mb-8 bg-[rgba(0,0,0,0.1)]">
-              <AddToWishList id={id} name={gameInfo.name} price={269} imgSrc={gameInfo.background_image} />
+              <AddToWishList id={gameInfo.id} name={gameInfo.name} price={404} imgSrc={gameInfo.background_image} />
             </div>
 
             <div
@@ -127,9 +127,9 @@ const Product = () => {
               <p className="lg:text-xl">Buy {gameInfo.name}</p>
               <div className="flex items-center gap-4 bg-black p-1 rounded-sm">
                 <p className="ml-2 min-w-fit text-xs text-gray-100 lg:text-sm">
-                  &#8377; 269
+                  &#8377; 404
                 </p>
-                <AddToCart id={id} name={gameInfo.name} price={269} imgSrc={gameInfo.background_image} />
+                <AddToCart id={gameInfo.id} name={gameInfo.name} price={404} imgSrc={gameInfo.background_image} />
               </div>
             </div>
 
