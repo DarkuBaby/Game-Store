@@ -1,9 +1,9 @@
 const games = [
   {
-    id: 1,
-    name: "GTA 3",
+    id: 3498,
+    name: "Grand Theft Auto 5",
     url: "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
-    price: 269,
+    price: 404,
   },
   {
     id: 2,

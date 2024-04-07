@@ -35,17 +35,27 @@ const Product = () => {
     getGameInfo();
   }, []);
 
+  //* Gradient style for background where price is displayed
   const bgGradientStyle = {
     background: "linear-gradient(to left, #64748b, #373d4e)",
   };
-
+  
+  //* Gradient style for underline
   const underLineGradient = {
     background: "linear-gradient(to right, #0c4a6e, transparent)",
   };
 
-  let r, number, afterDecimal, remaining, cleanDescription, pcRequirements;
 
-  //* Waiting for 
+  let r,
+    number,
+    afterDecimal,
+    remaining,
+    cleanDescription,
+    pcRequirements,
+    minimum,
+    recommended;
+
+  //* Do the following after receiving response i.e. after loading is finished
 
   if (!isLoading) {
     r = gameInfo.rating;
@@ -53,7 +63,28 @@ const Product = () => {
     afterDecimal = Math.round((r - number) * 10) / 10;
     remaining = Math.floor(5 - r);
     cleanDescription = gameInfo.description.replace(/\n/g, "<br />");
-    pcRequirements = gameInfo.platforms !== null ? gameInfo.platforms.filter((platformItem) => platformItem.platform.name === "PC" ) : "Empty";
+
+    //? Check if game is available for PC
+    pcRequirements = gameInfo.platforms.filter(
+      (platformItem) => platformItem.platform.name === "PC"
+    );
+
+    //? Check if PC requirements are mentioned for the game otherwise display that requirements are not available
+    if (pcRequirements.length !== 0) {
+
+      //? The requirements key should not be empty
+      minimum =
+        Object.keys(pcRequirements[0].requirements).length === 0
+          ? "Minimum requirements not available"
+          : pcRequirements[0].requirements.minimum;
+      recommended =
+        Object.keys(pcRequirements[0].requirements).length === 0
+          ? "Recommended requirements not available"
+          : pcRequirements[0].requirements.recommended;
+    } else {
+      minimum = "Minimum requirements not available";
+      recommended = "Recommended requirements not available";
+    }
   }
 
   return (
@@ -78,13 +109,19 @@ const Product = () => {
                 <div>
                   <p className="flex justify-between">
                     <span>Developer:</span>
-                    <span>{ gameInfo.developers !== null ? gameInfo.developers.map(dev => dev.name).join(", "):
-                    "Unknown"}</span>
+                    <span>
+                      {gameInfo.developers !== null
+                        ? gameInfo.developers.map((dev) => dev.name).join(", ")
+                        : "Unknown"}
+                    </span>
                   </p>
                   <p className="flex justify-between">
                     <span>Publisher:</span>
-                    <span>{ gameInfo.publishers !== null ? gameInfo.publishers.map(pub => pub.name).join(", "):
-                    "Unknown"}</span>
+                    <span>
+                      {gameInfo.publishers !== null
+                        ? gameInfo.publishers.map((pub) => pub.name).join(", ")
+                        : "Unknown"}
+                    </span>
                   </p>
                 </div>
                 <div>
@@ -98,26 +135,36 @@ const Product = () => {
                     <span>Audience Rating:</span>
                     <span className="flex text-orange-500 ">
                       {[...Array(number)].map((_, index) => (
-                    <FaStar key={index} />
-                  ))}
-                  {afterDecimal != 0 && <FaStarHalfAlt />}
-                  {remaining > 0 &&
-                    [...Array(remaining)].map((_, index) => (
-                      <FaRegStar key={index} />
-                    ))}
+                        <FaStar key={index} />
+                      ))}
+                      {afterDecimal != 0 && <FaStarHalfAlt />}
+                      {remaining > 0 &&
+                        [...Array(remaining)].map((_, index) => (
+                          <FaRegStar key={index} />
+                        ))}
                     </span>
                   </p>
                 </div>
                 <div>
                   <p className="flex justify-between">
                     <span>ESRB Rating:</span>
-                    <span>{gameInfo.esrb_rating && gameInfo.esrb_rating.name !== null ? gameInfo.esrb_rating.name : "Rating Not Available"}</span>
+                    <span>
+                      {gameInfo.esrb_rating &&
+                      gameInfo.esrb_rating.name !== null
+                        ? gameInfo.esrb_rating.name
+                        : "Rating Not Available"}
+                    </span>
                   </p>
                 </div>
               </div>
             </div>
             <div className="py-4 px-2 mb-8 bg-[rgba(0,0,0,0.1)]">
-              <AddToWishList id={gameInfo.id} name={gameInfo.name} price={404} imgSrc={gameInfo.background_image} />
+              <AddToWishList
+                id={gameInfo.id}
+                name={gameInfo.name}
+                price={404}
+                imgSrc={gameInfo.background_image}
+              />
             </div>
 
             <div
@@ -129,7 +176,12 @@ const Product = () => {
                 <p className="ml-2 min-w-fit text-xs text-gray-100 lg:text-sm">
                   &#8377; 404
                 </p>
-                <AddToCart id={gameInfo.id} name={gameInfo.name} price={404} imgSrc={gameInfo.background_image} />
+                <AddToCart
+                  id={gameInfo.id}
+                  name={gameInfo.name}
+                  price={404}
+                  imgSrc={gameInfo.background_image}
+                />
               </div>
             </div>
 
@@ -147,10 +199,8 @@ const Product = () => {
                 style={underLineGradient}
                 className="mt-1 mb-4 border-none bg-gray-600 h-0.5"
               />
-              <p className="mb-4">
-                { Object.keys(pcRequirements[0].requirements).length === 0 ? "Minimum requirements not available" : pcRequirements[0].requirements.minimum}
-              </p>
-              <p>{ Object.keys(pcRequirements[0].requirements).length === 0 ? "Recommended requirements not available" : pcRequirements[0].requirements.recommended}</p>
+              <p className="mb-4">{minimum}</p>
+              <p>{recommended}</p>
             </div>
           </div>
         )}
