@@ -1,5 +1,4 @@
 import React from "react";
-import games from "../lib/games";
 import { NavLink } from "react-router-dom";
 import RemoveFromCart from "../Buttons/RemoveFromCart.jsx"
 
@@ -18,7 +17,7 @@ const CartItem = ({ id, name, price, imgSrc, quantity }) => {
             <p className="text-lime-300">&#8377; {price}</p>
             <p>{quantity}</p>
           </div>
-          <div className="p-2 mt-auto text-sm z-10 right-2 bottom-0 lg:absolute">
+          <div className="p-2 mt-4 text-sm z-10 right-2 bottom-0 lg:absolute lg:mt-0">
             <RemoveFromCart id={id} />
           </div>
         </div>

@@ -39,7 +39,7 @@ const Slider = () => {
       <div className=" flex items-center justify-center gap-8 pt-8">
         {
             [...Array(sliderImg.length)].map((_, index)=>{
-                return <span className={`rounded-full  bg-white w-[6px] h-[6px] ${currentSlide === index ? "opacity-100" : "opacity-20"}`}></span>
+                return <span key={index} className={`rounded-full  bg-white w-[6px] h-[6px] ${currentSlide === index ? "opacity-100" : "opacity-20"}`}></span>
             })
         }
       </div>
