@@ -1,8 +1,21 @@
-# React + Vite
+# React E-Commerce App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end of an e-commerce store that sells video games.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Add to cart and add to wishlist features.
+* Uses API call to fetch games by category and display its details.
+
+## Installation and setup
+
+* git clone `https://github.com/Narayan2206/react-e-commerce-app.git`
+* `npm install`
+* An `.env.sample` file is given, get api key by registering here [RAWG](https://rawg.io/apidocs), and add your key to the file.
+* Rename `.env.sample` to `.env`.
+* `npm start`, will run the project.
+
+
+# To-Do
+* Add backend, user registeration and authentication.
+* Add payment gateway.
