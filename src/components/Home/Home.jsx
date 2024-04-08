@@ -1,6 +1,8 @@
 import React from "react"
 import Hero from "./Hero.jsx";
 import CardSlider from "./CardSlider.jsx";
+import games from "../lib/games.js";
+import newGames from "../lib/newGames.js";
 
 const Home = () => {
   return (
@@ -9,11 +11,11 @@ const Home = () => {
         
         <Hero />
          
-        <CardSlider title={"Special Offers"} />
+        <CardSlider title={"Special Offers"} games={games} />
 
-        <CardSlider title={"This Weeks Hits"} />
+        <CardSlider title={"This Weeks Hits"} games={games} />
 
-        <CardSlider title={"Top New Releases"} />
+        <CardSlider title={"Top New Releases"} games={newGames} />
 
       </main>
     </>

@@ -1,12 +1,11 @@
 import React from "react";
-import games from "../lib/games";
 import { v4 as uuidv4 } from "uuid";
 import Card from "./Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const CardSlider = ({ title }) => {
+const CardSlider = ({ title , games }) => {
  
   const settings = {
     dots: true,
