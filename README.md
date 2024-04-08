@@ -11,8 +11,8 @@ Front-end of an e-commerce store that sells video games.
 
 * git clone `https://github.com/Narayan2206/react-e-commerce-app.git`
 * `npm install`
-* An `.env.sample` file is given, get api key by registering here [RAWG](https://rawg.io/apidocs), and add your key to the file.
-* Rename `.env.sample` to `.env`.
+* An `.env.sample` file is given, get api key by registering here [RAWG](https://rawg.io/apidocs).
+* Create `.env` file based on `.env.sample` and add your api key.
 * `npm start`, will run the project.
 
 
