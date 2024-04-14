@@ -2,7 +2,7 @@ import React from "react";
 import CartItem from "./CartItem.jsx";
 import { NavLink } from "react-router-dom";
 import useCartStore from "../store/cartStore.js";
-import { v4 as uuidv4 } from 'uuid';
+import { toast } from "react-toastify";
 
 const Cart = () => {
 
@@ -12,6 +12,11 @@ const Cart = () => {
   cart.forEach(cartitem => {
     totalPrice += cartitem.price;
   });
+
+  const handleEmptyCart = ()=>{
+    emptyCart();
+    toast.success("Cart cleared.");
+  }
 
   return (
     <main className="max-w-[1280px] mx-auto px-4 py-8 bg-[#1f2937] text-white min-h-[100vh]">
@@ -50,7 +55,7 @@ const Cart = () => {
           <NavLink to="/" onClick={()=> window.scrollTo(0,0)} >
             <button className="bg-gray-900 text-sm px-3 py-2 transition ease-in-out duration-500 hover:bg-gray-700">{ cart.length === 0 ? "Browse Games" :"Continue Shopping"}</button> 
           </NavLink>
-         { cart.length !== 0 && <button className="text-sm hover:text-gray-400" onClick={emptyCart}>Remove all items</button> }
+         { cart.length !== 0 && <button className="text-sm hover:text-gray-400" onClick={handleEmptyCart}>Remove all items</button> }
         </div>
       </section>
     </main>
