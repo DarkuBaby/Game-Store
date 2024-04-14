@@ -12,7 +12,7 @@ const games = [
     price: 404,
   },
   {
-    id: 3493,
+    id: 3439,
     name: "Life is Strange",
     url: "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
     price: 404,
