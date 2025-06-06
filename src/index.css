@@ -3,25 +3,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .arrow-btn {
-    @apply text-2xl lg:text-4xl cursor-pointer absolute z-10 inset-y-1/2 rounded-full bg-[rgba(255,255,255,0.5)];
-  }
-
-  .arrow-btn:hover {
-    @apply custom-shadow;
-  }
-
-  .custom-shadow {
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
-  }
+/* Add some global styles to enhance the default look */
+body {
+  @apply bg-background text-text font-poppins;
 }
 
-.slick-track {
-  margin: 1rem !important;
+/* Customize scrollbars for a modern look */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.slick-dots li button:before {
-  color: white !important; /* Change the color of the dots here */
+::-webkit-scrollbar-thumb {
+  background-color: theme('colors.accent');
+  border-radius: 10px;
 }
 
+::-webkit-scrollbar-track {
+  background-color: theme('colors.surface');
+}
+
+/* Button styles */
+.btn {
+  @apply bg-primary text-white px-4 py-2 rounded-md shadow-md transition-all duration-200 ease-in-out;
+}
+
+.btn:hover {
+  @apply bg-success;
+}
+
+/* Card styles */
+.card {
+  @apply bg-surface text-text p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-300;
+}
